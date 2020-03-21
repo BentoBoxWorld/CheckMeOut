@@ -19,9 +19,9 @@ import world.bentobox.checkmeout.CheckMeOut;
  * @author tastybento
  *
  */
-public class DeleteSubmissionCommand extends ConfirmableCommand {
+class DeleteSubmissionCommand extends ConfirmableCommand {
 
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
     private @Nullable UUID target;
 
     public DeleteSubmissionCommand(CheckMeOut addon, CompositeCommand bsbIslandCmd) {

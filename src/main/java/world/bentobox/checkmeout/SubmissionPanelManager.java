@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.command.Command;
 import org.bukkit.inventory.ItemStack;
 
 import world.bentobox.bentobox.api.panels.PanelItem;
@@ -17,7 +18,7 @@ import world.bentobox.bentobox.api.user.User;
 public class SubmissionPanelManager {
 
     private static final int PANEL_MAX_SIZE = 52;
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
 
     public SubmissionPanelManager(CheckMeOut addon) {
         this.addon = addon;
@@ -38,7 +39,7 @@ public class SubmissionPanelManager {
 
     private boolean hander(World world, User clicker, UUID owner) {
         clicker.closeInventory();
-        String adminCommand = addon.getPlugin().getIWM().getAddon(world).map(gm -> gm.getAdminCommand().map(c -> c.getLabel()).orElse("")).orElse("");
+        String adminCommand = addon.getPlugin().getIWM().getAddon(world).map(gm -> gm.getAdminCommand().map(Command::getLabel).orElse("")).orElse("");
         String command = addon.getSettings().getAdminCommand() + " check " + addon.getPlayers().getName(owner);
         clicker.getPlayer().performCommand((adminCommand.isEmpty() ? "" : adminCommand + " ") + command);
         return true;

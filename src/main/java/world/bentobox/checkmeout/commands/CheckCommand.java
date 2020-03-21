@@ -16,9 +16,9 @@ import world.bentobox.checkmeout.CheckMeOut;
  * @author tastybento
  *
  */
-public class CheckCommand extends CompositeCommand {
+class CheckCommand extends CompositeCommand {
 
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
 
     public CheckCommand(CheckMeOut addon, CompositeCommand parent) {
         super(parent, "check");

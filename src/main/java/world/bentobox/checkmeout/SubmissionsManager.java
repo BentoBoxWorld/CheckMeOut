@@ -32,13 +32,13 @@ import world.bentobox.checkmeout.objects.SubmissionData;
  */
 public class SubmissionsManager {
     private static final int MAX_SUBMISSIONS = 600;
-    private BentoBox plugin;
+    private final BentoBox plugin;
     // Map of all submissions stored as player, Location
     private Map<World, Map<UUID, Location>> worldsSubmissionsList;
     // Database handler for level data
-    private Database<SubmissionData> handler;
+    private final Database<SubmissionData> handler;
 
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
     private SubmissionData submissionsData = new SubmissionData();
 
     /**
@@ -47,7 +47,7 @@ public class SubmissionsManager {
      * @return map of submissions
      */
     @NonNull
-    public Map<UUID, Location> getSubmissionsMap(@Nullable World world) {
+    private Map<UUID, Location> getSubmissionsMap(@Nullable World world) {
         return worldsSubmissionsList.computeIfAbsent(Util.getWorld(world), k -> new HashMap<>());
     }
 
@@ -91,7 +91,7 @@ public class SubmissionsManager {
      * @return Location of submission or null
      */
     @Nullable
-    public Location getSubmission(World world, UUID playerUUID) {
+    private Location getSubmission(World world, UUID playerUUID) {
         return getSubmissionsMap(world).get(playerUUID);
     }
 
@@ -116,8 +116,7 @@ public class SubmissionsManager {
         getSubmissionsMap(world).values().removeIf(Objects::isNull);
         // Bigger value of time means a more recent login
         TreeMap<Long, UUID> map = new TreeMap<>();
-        getSubmissionsMap(world).entrySet().forEach(en -> {
-            UUID uuid = en.getKey();
+        getSubmissionsMap(world).forEach((uuid, value) -> {
             // If never played, will be zero
             long lastPlayed = addon.getServer().getOfflinePlayer(uuid).getLastPlayed();
             // This aims to avoid the chance that players logged off at exactly the same time
@@ -144,7 +143,7 @@ public class SubmissionsManager {
     public Set<UUID> listSubmissions(@NonNull World world) {
         // Remove any null locations
         getSubmissionsMap(world).values().removeIf(Objects::isNull);
-        return getSubmissionsMap(world).entrySet().stream().filter(e -> Util.sameWorld(world, e.getValue().getWorld())).map(Map.Entry::getKey).collect(Collectors.toSet());
+        return getSubmissionsMap(world).entrySet().stream().filter(e -> Util.sameWorld(world, Objects.requireNonNull(e.getValue().getWorld()))).map(Map.Entry::getKey).collect(Collectors.toSet());
     }
 
     /**
@@ -165,12 +164,10 @@ public class SubmissionsManager {
     /**
      * Remove submission owned by UUID
      *
-     * @param uuid
+     * @param uuid - UUID of player
      */
     public void removeSubmission(World world, UUID uuid) {
-        if (getSubmissionsMap(world).containsKey(uuid)) {
-            getSubmissionsMap(world).remove(uuid);
-        }
+        getSubmissionsMap(world).remove(uuid);
         saveSubmissions();
     }
 

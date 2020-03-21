@@ -47,8 +47,10 @@ public class Settings implements ConfigObject
     @ConfigComment("")
     @ConfigComment("User and admin commands. You can change them if they clash with other addons or plugins.")
     @ConfigEntry(path = "user-command")
+    private
     String userCommand = "checkmeout";
     @ConfigEntry(path = "admin-command")
+    private
     String adminCommand = "cmo";
 
 

@@ -10,9 +10,9 @@ import world.bentobox.checkmeout.CheckMeOut;
  * @author tastybento
  *
  */
-public class SeeSubmissionsCommand extends CompositeCommand {
+class SeeSubmissionsCommand extends CompositeCommand {
 
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
 
     public SeeSubmissionsCommand(CheckMeOut addon, CompositeCommand parent) {
         super(parent, "seesubmissions", "seesubs");

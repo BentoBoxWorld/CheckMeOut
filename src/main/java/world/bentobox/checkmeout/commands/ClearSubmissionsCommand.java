@@ -13,9 +13,9 @@ import world.bentobox.checkmeout.CheckMeOut;
  * @author tastybento
  *
  */
-public class ClearSubmissionsCommand extends ConfirmableCommand {
+class ClearSubmissionsCommand extends ConfirmableCommand {
 
-    private CheckMeOut addon;
+    private final CheckMeOut addon;
 
     public ClearSubmissionsCommand(CheckMeOut addon, CompositeCommand bsbIslandCmd) {
         super(bsbIslandCmd, "clearall");

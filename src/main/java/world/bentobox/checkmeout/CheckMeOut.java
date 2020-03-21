@@ -124,7 +124,6 @@ public class CheckMeOut extends Addon {
         } else {
             logWarning("Addon did not hook into any game modes - disabling");
             this.setState(State.DISABLED);
-            return;
         }
     }
 
@@ -140,7 +139,7 @@ public class CheckMeOut extends Addon {
     /**
      * This method loads addon configuration settings in memory.
      */
-    private boolean loadSettings() {
+    private void loadSettings() {
         if (settingsConfig == null) {
             settingsConfig = new Config<>(this, Settings.class);
         }
@@ -149,10 +148,9 @@ public class CheckMeOut extends Addon {
             // Disable
             this.logError("CheckMeOut settings could not load! Addon disabled.");
             this.setState(State.DISABLED);
-            return false;
+            return;
         }
         settingsConfig.saveConfigObject(settings);
-        return true;
     }
 
 

@@ -17,7 +17,7 @@ disabled-gamemodes: []
 #
 # CheckMeOut panel name formatting.
 # Example: &c will make names red, &f is white
-name-format: &f
+name-format: "&f"
 #
 # Allow random checking - adds a button to the panel that goes to a random island
 random-allowed: true
