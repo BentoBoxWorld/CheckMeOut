@@ -11,9 +11,6 @@ import world.bentobox.bentobox.api.configuration.StoreAt;
 
 @StoreAt(filename="config.yml", path="addons/CheckMeOut")
 @ConfigComment("CheckMeOut Configuration [version]")
-@ConfigComment("This config file is dynamic and saved when the server is shutdown.")
-@ConfigComment("You cannot edit it while the server is running because changes will")
-@ConfigComment("be lost! Use in-game settings GUI or edit when server is offline.")
 @ConfigComment("")
 public class Settings implements ConfigObject
 {

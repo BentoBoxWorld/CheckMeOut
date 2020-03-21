@@ -1,8 +1,4 @@
 # CheckMeOut Configuration ${version}
-# This config file is dynamic and saved when the server is shutdown.
-# You cannot edit it while the server is running because changes will
-# be lost! Use in-game settings GUI or edit when server is offline.
-# 
 #
 # Icon that will be displayed in CheckMeOut list.
 # It uses native Minecraft material strings, but using string 'PLAYER_HEAD', it is possible to

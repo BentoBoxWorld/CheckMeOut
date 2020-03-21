@@ -12,29 +12,47 @@ permissions:
     description: Player can use the checkmeout command
     default: true
   bskyblock.checkmeout.admin.check:
-    description: Admin can open the submissions GUI
+    description: Admin can teleport to a player's island
+    default: op
+  bskyblock.checkmeout.admin.delete:
+    description: Admin can delete a submission
     default: op
   bskyblock.checkmeout.admin.clearsubmissions:
     description: Admin can clear submissions
     default: op
-
+  bskyblock.checkmeout.admin.seesubs:
+    description: Admin can open the submissions GUI
+    default: op
+    
   acidisland.checkmeout:
     description: Player can use the checkmeout command
     default: true
   acidisland.checkmeout.admin.check:
-    description: Admin can open the check island GUI
+    description: Admin can teleport to a player's island
+    default: op
+  acidisland.checkmeout.admin.delete:
+    description: Admin can delete a submission
     default: op
   acidisland.checkmeout.admin.clearsubmissions:
     description: Admin can clear submissions
+    default: op
+  acidisland.checkmeout.admin.seesubs:
+    description: Admin can open the submissions GUI
     default: op
     
   caveblock.checkmeout:
     description: Player can use the checkmeout command
     default: true
   caveblock.checkmeout.admin.check:
-    description: Admin can open the check island GUI
+    description: Admin can teleport to a player's island
+    default: op
+  caveblock.checkmeout.admin.delete:
+    description: Admin can delete a submission
     default: op
   caveblock.checkmeout.admin.clearsubmissions:
     description: Admin can clear submissions
+    default: op
+  caveblock.checkmeout.admin.seesubs:
+    description: Admin can open the submissions GUI
     default: op
     
