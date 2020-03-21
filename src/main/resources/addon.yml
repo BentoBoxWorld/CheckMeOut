@@ -1,0 +1,40 @@
+name: CheckMeOut
+main: world.bentobox.checkmeout.CheckMeOut
+version: ${version}${build.number}
+icon: ITEM_FRAME
+
+authors: tastybento
+
+softdepend: AcidIsland, BSkyBlock, CaveBlock
+
+permissions:
+  bskyblock.checkmeout:
+    description: Player can use the checkmeout command
+    default: true
+  bskyblock.checkmeout.admin.check:
+    description: Admin can open the submissions GUI
+    default: op
+  bskyblock.checkmeout.admin.clearsubmissions:
+    description: Admin can clear submissions
+    default: op
+
+  acidisland.checkmeout:
+    description: Player can use the checkmeout command
+    default: true
+  acidisland.checkmeout.admin.check:
+    description: Admin can open the check island GUI
+    default: op
+  acidisland.checkmeout.admin.clearsubmissions:
+    description: Admin can clear submissions
+    default: op
+    
+  caveblock.checkmeout:
+    description: Player can use the checkmeout command
+    default: true
+  caveblock.checkmeout.admin.check:
+    description: Admin can open the check island GUI
+    default: op
+  caveblock.checkmeout.admin.clearsubmissions:
+    description: Admin can clear submissions
+    default: op
+    

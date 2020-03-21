@@ -1,0 +1,29 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
+checkmeout: 
+  commands: 
+    admin: 
+      check: 
+        description: "warp to the submitter's island"
+        parameters: "<player name>"
+      clearall: 
+        description: "clear all submissions"
+      delete: 
+        description: "delete the player's submission"
+        parameters: "<player name>"
+      description: "CheckMeOut Admin Command"
+      seesubs: 
+        descriptions: "see submissions panel"
+    user: 
+      description: "Tell admins to check out your island!"
+  error: 
+    does-not-exist: "&c There is no submission from that player!"
+    no-submissions-yet: "&c There are no submissions yet"
+  next: "&6 Next page"
+  previous: "&6 Previous page"
+  random: "&4 Random Warp"
+  success: "&a Success!"
+  title: Submissions
