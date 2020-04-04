@@ -189,7 +189,10 @@ public class SubmissionsManager {
     public void warpPlayer(@NonNull World world, @NonNull User user, @NonNull UUID owner) {
         final Location warpSpot = getSubmission(world, owner);
         user.getPlayer().playSound(user.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 1F, 1F);
-        new SafeSpotTeleport(plugin, user.getPlayer(), warpSpot, "", false, 0);
+        new SafeSpotTeleport.Builder(plugin)
+        .entity(user.getPlayer())
+        .location(warpSpot)
+        .build();
     }
 
     /**
