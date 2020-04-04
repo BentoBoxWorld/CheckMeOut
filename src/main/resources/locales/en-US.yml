@@ -16,7 +16,7 @@ checkmeout:
         parameters: "<player name>"
       description: "CheckMeOut Admin Command"
       seesubs: 
-        descriptions: "see submissions panel"
+        description: "see submissions panel"
     user: 
       description: "Tell admins to check out your island!"
   error: 
