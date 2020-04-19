@@ -5,7 +5,7 @@ icon: ITEM_FRAME
 
 authors: tastybento
 
-softdepend: AcidIsland, BSkyBlock, CaveBlock
+softdepend: AcidIsland, BSkyBlock, CaveBlock, AOneBlock
 
 permissions:
   bskyblock.checkmeout:
@@ -53,6 +53,22 @@ permissions:
     description: Admin can clear submissions
     default: op
   caveblock.checkmeout.admin.seesubs:
+    description: Admin can open the submissions GUI
+    default: op
+
+  aoneblock.checkmeout:
+    description: Player can use the checkmeout command
+    default: true
+  aoneblock.checkmeout.admin.check:
+    description: Admin can teleport to a player's island
+    default: op
+  aoneblock.checkmeout.admin.delete:
+    description: Admin can delete a submission
+    default: op
+  aoneblock.checkmeout.admin.clearsubmissions:
+    description: Admin can clear submissions
+    default: op
+  aoneblock.checkmeout.admin.seesubs:
     description: Admin can open the submissions GUI
     default: op
     
