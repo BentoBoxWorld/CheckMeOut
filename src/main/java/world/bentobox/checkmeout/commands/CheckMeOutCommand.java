@@ -21,8 +21,9 @@ public class CheckMeOutCommand extends CompositeCommand {
      */
     @Override
     public void setup() {
-        // TODO Auto-generated method stub
-
+        this.setPermission("checkmeout");
+        this.setOnlyPlayer(true);
+        this.setDescription("checkmeout.commands.user.description");
     }
 
     @Override
