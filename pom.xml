@@ -59,14 +59,14 @@
         <powermock.version>2.0.2</powermock.version>
         <!-- More visible way how to change dependency versions -->
         <spigot.version>1.15.2-R0.1-SNAPSHOT</spigot.version>
-        <bentobox.version>1.13.0-SNAPSHOT</bentobox.version>
+        <bentobox.version>1.17.1-SNAPSHOT</bentobox.version>
         <level.version>1.5.0</level.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- Do not change unless you want different name for local builds. -->
         <build.number>-LOCAL</build.number>
         <!-- This allows to change between versions. -->
-        <build.version>1.0.2</build.version>
+        <build.version>1.0.3</build.version>
     </properties>
 
     <!-- Profiles will allow to automatically change build version. -->
@@ -108,30 +108,6 @@
                 <!-- Empties build number variable. -->
                 <build.number></build.number>
             </properties>
-        </profile>
-        <profile>
-            <id>sonar</id>
-            <properties>
-                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <sonar.organization>bentobox-world</sonar.organization>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonarsource.scanner.maven</groupId>
-                        <artifactId>sonar-maven-plugin</artifactId>
-                        <version>3.6.0.1398</version>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sonar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 

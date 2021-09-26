@@ -41,10 +41,12 @@ public class CheckMeOutCommand extends CompositeCommand {
      */
     @Override
     public boolean execute(User user, String label, List<String> args) {
-        if (((CheckMeOut)getAddon()).getSubmissionsManager().addSubmission(user.getUniqueId(), getPlayers().getHomeLocation(getWorld(), user.getUniqueId()))) {
+        if (((CheckMeOut)getAddon()).getSubmissionsManager().addSubmission(user.getUniqueId(), getIslands().getHomeLocation(getWorld(), user.getUniqueId()))) {
             user.sendMessage("general.success");
             return true;
         }
+        user.sendMessage("general.errors.general");
+        getAddon().logError("Could not submit island");
         return false;
     }
 

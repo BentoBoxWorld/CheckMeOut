@@ -73,6 +73,7 @@ public class SubmissionsManager {
      * @return true if successful, false if not
      */
     public boolean addSubmission(final UUID playerUUID, final Location loc) {
+        BentoBox.getInstance().logDebug("add ing submittion " + playerUUID + " " + loc);
         // Do not allow null players to set submissions
         if (playerUUID == null || loc == null) {
             return false;
@@ -176,7 +177,7 @@ public class SubmissionsManager {
      */
     public void saveSubmissions() {
         submissionsData.setSubmissions(worldsSubmissionsList);
-        handler.saveObject(submissionsData);
+        handler.saveObjectAsync(submissionsData);
     }
 
     /**
