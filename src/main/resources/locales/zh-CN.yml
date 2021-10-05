@@ -1,0 +1,24 @@
+checkmeout: 
+  commands: 
+    admin: 
+      check: 
+        description: "传送到提交者的岛屿"
+        parameters: "<玩家名>"
+      clearall: 
+        description: "清除所有岛屿提交"
+      delete: 
+        description: "删除玩家的岛屿提交"
+        parameters: "<玩家名>"
+      description: "CheckMeOut 管理员指令"
+      seesubs: 
+        description: "查看提交面板"
+    user: 
+      description: "向管理员们提交您的岛屿!"
+  error: 
+    does-not-exist: "&c 该玩家没有提交岛屿!"
+    no-submissions-yet: "&c 还没有人提交岛屿"
+  next: "&6 下一页"
+  previous: "&6 上一页"
+  random: "&4 随机传送"
+  success: "&a 成功!"
+  title: 岛屿提交
