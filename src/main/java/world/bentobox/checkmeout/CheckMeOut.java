@@ -12,6 +12,9 @@ import world.bentobox.bentobox.util.Util;
 import world.bentobox.checkmeout.commands.CMOAdminCommand;
 import world.bentobox.checkmeout.commands.CheckMeOutCommand;
 import world.bentobox.checkmeout.config.Settings;
+import world.bentobox.checkmeout.managers.SubmissionPanelManager;
+import world.bentobox.checkmeout.managers.SubmissionsManager;
+
 
 /**
  * Addon to BentoBox that enables island submissions

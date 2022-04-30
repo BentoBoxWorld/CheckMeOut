@@ -54,19 +54,29 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
         <!-- Non-minecraft related dependencies -->
         <powermock.version>2.0.2</powermock.version>
-        <!-- More visible way how to change dependency versions -->
-        <spigot.version>1.15.2-R0.1-SNAPSHOT</spigot.version>
-        <bentobox.version>1.17.1-SNAPSHOT</bentobox.version>
+        <!-- SPIGOT API version -->
+        <spigot.version>1.16.4-R0.1-SNAPSHOT</spigot.version>
+        <!-- Vault API version -->
+        <vault.version>1.7</vault.version>
+
+        <!-- BentoBox API version -->
+        <bentobox.version>1.20.0</bentobox.version>
+        <!-- Warps addon version -->
+        <warps.version>1.7.0</warps.version>
+        <!-- Visit addon version -->
+        <visit.version>1.5.0-SNAPSHOT</visit.version>
+        <!-- Level addon version -->
         <level.version>1.5.0</level.version>
+        <!-- Panel Utils version -->
+        <panelutils.version>1.0.0</panelutils.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
-        <!-- Do not change unless you want different name for local builds. -->
+        <!-- This allows to change between versions and snapshots. -->
+        <build.version>1.1.0</build.version>
         <build.number>-LOCAL</build.number>
-        <!-- This allows to change between versions. -->
-        <build.version>1.0.3</build.version>
     </properties>
 
     <!-- Profiles will allow to automatically change build version. -->
@@ -134,6 +144,12 @@
             <version>${spigot.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>plugin-annotations</artifactId>
+            <version>1.2.3-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- Mockito (Unit testing) -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -157,6 +173,24 @@
             <groupId>world.bentobox</groupId>
             <artifactId>bentobox</artifactId>
             <version>${bentobox.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>level</artifactId>
+            <version>${level.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>visit</artifactId>
+            <version>${visit.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>warps</artifactId>
+            <version>${warps.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Static analysis -->

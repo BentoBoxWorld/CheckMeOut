@@ -1,4 +1,4 @@
-package world.bentobox.checkmeout;
+package world.bentobox.checkmeout.managers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,8 @@ import world.bentobox.bentobox.api.panels.PanelItem;
 import world.bentobox.bentobox.api.panels.builders.PanelBuilder;
 import world.bentobox.bentobox.api.panels.builders.PanelItemBuilder;
 import world.bentobox.bentobox.api.user.User;
+import world.bentobox.checkmeout.CheckMeOut;
+
 
 public class SubmissionPanelManager {
 
