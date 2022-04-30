@@ -1,5 +1,6 @@
 package world.bentobox.checkmeout.config;
 
+import org.bukkit.Material;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class Settings implements ConfigObject
     @ConfigComment("It uses native Minecraft material strings, but using string 'PLAYER_HEAD', it is possible to")
     @ConfigComment("use player heads instead. Beware that Mojang API rate limiting may prevent heads from loading.")
     @ConfigEntry(path = "icon")
-    private String icon = "GRASS_BLOCK";
+    private Material islandIcon = Material.GRASS_BLOCK;
 
     @ConfigComment("")
     @ConfigComment("This list stores GameModes in which Level addon should not work.")
@@ -31,24 +32,17 @@ public class Settings implements ConfigObject
     private Set<String> disabledGameModes = new HashSet<>();
 
     @ConfigComment("")
-    @ConfigComment("CheckMeOut panel name formatting.")
-    @ConfigComment("Example: &c will make names red. &f is white")
-    @ConfigEntry(path = "name-format")
-    private String nameFormat = "&f";
-
-    @ConfigComment("")
-    @ConfigComment("Allow random checking - adds a button to the panel that goes to a random island")
-    @ConfigEntry(path = "random-allowed")
-    private boolean randomAllowed = true;
-
-    @ConfigComment("")
     @ConfigComment("User and admin commands. You can change them if they clash with other addons or plugins.")
-    @ConfigEntry(path = "user-command")
-    private
-    String userCommand = "checkmeout";
-    @ConfigEntry(path = "admin-command")
-    private
-    String adminCommand = "cmo";
+    @ConfigEntry(path = "commands.user-command")
+    private String userCommand = "checkmeout cmo";
+
+    @ConfigComment("")
+    @ConfigComment("View command for user to see other submissions.")
+    @ConfigEntry(path = "commands.view-command")
+    private String viewCommand = "view";
+
+    @ConfigEntry(path = "commands.admin-command")
+    private String adminCommand = "checkmeout cmo";
 
 
     // ---------------------------------------------------------------------
@@ -94,52 +88,20 @@ public class Settings implements ConfigObject
      * This method returns the icon object.
      * @return the icon object.
      */
-    public String getIcon()
+    public Material getIslandIcon()
     {
-        return icon;
+        return islandIcon;
     }
 
 
     /**
      * This method sets the icon object value.
-     * @param icon the icon object new value.
+     * @param islandIcon the icon object new value.
      */
-    public void setIcon(String icon)
+    public void setIslandIcon(Material islandIcon)
     {
-        this.icon = icon;
+        this.islandIcon = islandIcon;
     }
-
-
-    /**
-     * @return the nameFormat
-     */
-    public String getNameFormat() {
-        return nameFormat;
-    }
-
-
-    /**
-     * @param nameFormat the nameFormat to set
-     */
-    public void setNameFormat(String nameFormat) {
-        this.nameFormat = nameFormat;
-    }
-
-    /**
-     * @return the randomAllowed
-     */
-    public boolean isRandomAllowed() {
-        return randomAllowed;
-    }
-
-
-    /**
-     * @param randomAllowed the randomAllowed to set
-     */
-    public void setRandomAllowed(boolean randomAllowed) {
-        this.randomAllowed = randomAllowed;
-    }
-
 
     /**
      * @return the userCommand
@@ -173,4 +135,24 @@ public class Settings implements ConfigObject
     }
 
 
+    /**
+     * Gets view command.
+     *
+     * @return the view command
+     */
+    public String getViewCommand()
+    {
+        return viewCommand;
+    }
+
+
+    /**
+     * Sets view command.
+     *
+     * @param viewCommand the view command
+     */
+    public void setViewCommand(String viewCommand)
+    {
+        this.viewCommand = viewCommand;
+    }
 }

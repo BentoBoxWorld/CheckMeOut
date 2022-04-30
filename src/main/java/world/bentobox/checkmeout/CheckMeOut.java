@@ -9,11 +9,14 @@ import org.bukkit.World;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.util.Util;
-import world.bentobox.checkmeout.commands.CMOAdminCommand;
-import world.bentobox.checkmeout.commands.CheckMeOutCommand;
+import world.bentobox.checkmeout.commands.admin.CMOAdminCommand;
+import world.bentobox.checkmeout.commands.island.CheckMeOutCommand;
 import world.bentobox.checkmeout.config.Settings;
-import world.bentobox.checkmeout.managers.SubmissionPanelManager;
 import world.bentobox.checkmeout.managers.SubmissionsManager;
+import world.bentobox.level.Level;
+import world.bentobox.likes.LikesAddon;
+import world.bentobox.visit.VisitAddon;
+import world.bentobox.warps.Warp;
 
 
 /**
@@ -25,11 +28,6 @@ public class CheckMeOut extends Addon {
     // ---------------------------------------------------------------------
     // Section: Variables
     // ---------------------------------------------------------------------
-
-    /**
-     * Submissions panel Manager
-     */
-    private SubmissionPanelManager submissionsPanelManager;
 
     /**
      * Submissions manager.
@@ -55,6 +53,27 @@ public class CheckMeOut extends Addon {
      * Settings config object
      */
     private Config<Settings> settingsConfig;
+
+    /**
+     * Level addon instance.
+     */
+    private Level levelAddon;
+
+    /**
+     * Likes addon instance.
+     */
+    private LikesAddon likesAddon;
+
+    /**
+     * Visit addon instance.
+     */
+    private VisitAddon visitAddon;
+
+    /**
+     * Warp addon instance.
+     */
+    private Warp warpAddon;
+
 
     // ---------------------------------------------------------------------
     // Section: Methods
@@ -121,7 +140,6 @@ public class CheckMeOut extends Addon {
         {
             // Start managers
             submissionsManager = new SubmissionsManager(this, this.getPlugin());
-            submissionsPanelManager = new SubmissionPanelManager(this);
             // Load the listener
 
         } else {
@@ -135,7 +153,56 @@ public class CheckMeOut extends Addon {
     public void onDisable(){
         // Save the submissions
         if (submissionsManager != null)
+        {
             submissionsManager.saveSubmissions();
+        }
+    }
+
+
+    /**
+     * Check addon hooks.
+     */
+    public void allLoaded()
+    {
+        // Try to find Level addon and if it does not exist, display a warning
+        this.getAddonByName("Level").ifPresentOrElse(addon ->
+        {
+            this.levelAddon = (Level) addon;
+            this.log("CheckMeOut Addon hooked into Level addon.");
+        }, () ->
+        {
+            this.levelAddon = null;
+        });
+
+        // Try to find Likes addon and if it does not exist, display a warning
+        this.getAddonByName("Likes").ifPresentOrElse(addon ->
+        {
+            this.likesAddon = (LikesAddon) addon;
+            this.log("CheckMeOut Addon hooked into Likes addon.");
+        }, () ->
+        {
+            this.likesAddon = null;
+        });
+
+        // Try to find Visit addon and if it does not exist, display a warning
+        this.getAddonByName("Visit").ifPresentOrElse(addon ->
+        {
+            this.visitAddon = (VisitAddon) addon;
+            this.log("CheckMeOut Addon hooked into Visit addon.");
+        }, () ->
+        {
+            this.visitAddon = null;
+        });
+
+        // Try to find Warps addon and if it does not exist, display a warning
+        this.getAddonByName("Warps").ifPresentOrElse(addon ->
+        {
+            this.warpAddon = (Warp) addon;
+            this.log("CheckMeOut Addon hooked into Warps addon.");
+        }, () ->
+        {
+            this.warpAddon = null;
+        });
     }
 
 
@@ -146,7 +213,9 @@ public class CheckMeOut extends Addon {
         if (settingsConfig == null) {
             settingsConfig = new Config<>(this, Settings.class);
         }
+
         this.settings = settingsConfig.loadConfigObject();
+
         if (this.settings == null) {
             // Disable
             this.logError("CheckMeOut settings could not load! Addon disabled.");
@@ -154,16 +223,10 @@ public class CheckMeOut extends Addon {
             return;
         }
         settingsConfig.saveConfigObject(settings);
+
+        this.saveResource("panels/view_panel.yml", false);
     }
 
-
-    /**
-     * Get submissions panel manager
-     * @return Submissions Panel Manager
-     */
-    public SubmissionPanelManager getSubmissionsPanelManager() {
-        return submissionsPanelManager;
-    }
 
     public SubmissionsManager getSubmissionsManager() {
         return submissionsManager;
@@ -190,4 +253,46 @@ public class CheckMeOut extends Addon {
     }
 
 
+    /**
+     * Gets level addon.
+     *
+     * @return the level addon
+     */
+    public Level getLevelAddon()
+    {
+        return levelAddon;
+    }
+
+
+    /**
+     * Gets likes addon.
+     *
+     * @return the likes addon
+     */
+    public LikesAddon getLikesAddon()
+    {
+        return likesAddon;
+    }
+
+
+    /**
+     * Gets visit addon.
+     *
+     * @return the visit addon
+     */
+    public VisitAddon getVisitAddon()
+    {
+        return visitAddon;
+    }
+
+
+    /**
+     * Gets warp addon.
+     *
+     * @return the warp addon
+     */
+    public Warp getWarpAddon()
+    {
+        return warpAddon;
+    }
 }

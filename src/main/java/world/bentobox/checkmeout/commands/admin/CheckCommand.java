@@ -1,4 +1,4 @@
-package world.bentobox.checkmeout.commands;
+package world.bentobox.checkmeout.commands.admin;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package world.bentobox.checkmeout.commands;
+package world.bentobox.checkmeout.commands.island;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import world.bentobox.checkmeout.CheckMeOut;
 public class CheckMeOutCommand extends CompositeCommand {
 
     public CheckMeOutCommand(CheckMeOut addon, CompositeCommand parent) {
-        super(addon, parent, addon.getSettings().getUserCommand());
+        super(addon, parent, addon.getSettings().getUserCommand().split(" ")[0], addon.getSettings().getUserCommand().split(" "));
     }
 
     /* (non-Javadoc)
@@ -24,6 +24,8 @@ public class CheckMeOutCommand extends CompositeCommand {
         this.setPermission("checkmeout");
         this.setOnlyPlayer(true);
         this.setDescription("checkmeout.commands.user.description");
+
+        new ViewSubmissionsCommand(this.getAddon(), this);
     }
 
     @Override

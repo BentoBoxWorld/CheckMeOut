@@ -1,4 +1,4 @@
-package world.bentobox.checkmeout.commands;
+package world.bentobox.checkmeout.commands.admin;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +21,7 @@ public class CMOAdminCommand extends ConfirmableCommand {
     private @Nullable UUID target;
 
     public CMOAdminCommand(CheckMeOut addon, CompositeCommand bsbIslandCmd) {
-        super(bsbIslandCmd, addon.getSettings().getAdminCommand());
+        super(bsbIslandCmd, addon.getSettings().getAdminCommand().split(" ")[0], addon.getSettings().getAdminCommand().split(" "));
         new CheckCommand(addon, this);
         new DeleteSubmissionCommand(addon, this);
         new ClearSubmissionsCommand(addon, this);

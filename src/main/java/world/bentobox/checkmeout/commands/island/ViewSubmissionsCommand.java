@@ -1,29 +1,31 @@
-package world.bentobox.checkmeout.commands;
+package world.bentobox.checkmeout.commands.island;
 
 import java.util.List;
 
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.checkmeout.panels.ViewSubmissionsPanel;
+
 
 /**
  * @author tastybento
  *
  */
-class SeeSubmissionsCommand extends CompositeCommand {
+class ViewSubmissionsCommand extends CompositeCommand {
 
     private final CheckMeOut addon;
 
-    public SeeSubmissionsCommand(CheckMeOut addon, CompositeCommand parent) {
-        super(parent, "seesubmissions", "seesubs");
+    public ViewSubmissionsCommand(CheckMeOut addon, CompositeCommand parent) {
+        super(parent, addon.getSettings().getViewCommand().split(" ")[0], addon.getSettings().getViewCommand().split(" "));
         this.addon = addon;
     }
 
     @Override
     public void setup() {
-        this.setPermission("checkmeout.admin.seesubs");
+        this.setPermission("checkmeout.seesubs");
         this.setOnlyPlayer(true);
-        this.setDescription("checkmeout.commands.admin.seesubs.description");
+        this.setDescription("checkmeout.commands.seesubs.description");
     }
 
     @Override
@@ -37,15 +39,15 @@ class SeeSubmissionsCommand extends CompositeCommand {
 
     @Override
     public boolean execute(User user, String label, List<String> args) {
-
         if (args.isEmpty()) {
             // No args
-            addon.getSubmissionsPanelManager().showSubmissionsPanel(getWorld(), user, 0);
+            ViewSubmissionsPanel.openPanel(this.getAddon(), this.getWorld(), user);
             return true;
         }
-        this.showHelp(this, user);
-        return false;
-
+        else
+        {
+            this.showHelp(this, user);
+            return false;
+        }
     }
-
 }
