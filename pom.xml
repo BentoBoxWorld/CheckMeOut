@@ -69,7 +69,9 @@
         <!-- Visit addon version -->
         <visit.version>1.5.0-SNAPSHOT</visit.version>
         <!-- Level addon version -->
-        <level.version>1.5.0</level.version>
+        <level.version>2.5.0</level.version>
+        <!-- Likes addon version -->
+        <likes.version>2.1.1</likes.version>
         <!-- Panel Utils version -->
         <panelutils.version>1.0.0</panelutils.version>
         <!-- Revision variable removes warning about dynamic version -->
@@ -179,6 +181,12 @@
             <groupId>world.bentobox</groupId>
             <artifactId>level</artifactId>
             <version>${level.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>likes</artifactId>
+            <version>${likes.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
