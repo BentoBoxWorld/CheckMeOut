@@ -69,7 +69,7 @@
         <!-- Visit addon version -->
         <visit.version>1.5.0-SNAPSHOT</visit.version>
         <!-- Level addon version -->
-        <level.version>2.5.0</level.version>
+        <level.version>2.9.0</level.version>
         <!-- Likes addon version -->
         <likes.version>2.1.1</likes.version>
         <!-- Panel Utils version -->

@@ -6,36 +6,40 @@ import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.ConfirmableCommand;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.checkmeout.panels.Utils;
+
 
 /**
- * The /bsbadmin check <name> command
+ * The `/[admin_cmd] cmo clearall` command
  *
  * @author tastybento
- *
  */
-class ClearSubmissionsCommand extends ConfirmableCommand {
-
-    private final CheckMeOut addon;
-
-    public ClearSubmissionsCommand(CheckMeOut addon, CompositeCommand bsbIslandCmd) {
-        super(bsbIslandCmd, "clearall");
-        this.addon = addon;
+class ClearSubmissionsCommand extends ConfirmableCommand
+{
+    public ClearSubmissionsCommand(CompositeCommand parent)
+    {
+        super(parent, "clearall");
     }
 
+
     @Override
-    public void setup() {
+    public void setup()
+    {
         this.setPermission("checkmeout.admin.clearall");
         this.setOnlyPlayer(false);
         this.setDescription("checkmeout.commands.admin.clearall.description");
     }
 
+
     @Override
-    public boolean execute(User user, String label, List<String> args) {
-        this.askConfirmation(user, () -> {
-            addon.getSubmissionsManager().clearAll();
-            user.sendMessage("general.success");
+    public boolean execute(User user, String label, List<String> args)
+    {
+        this.askConfirmation(user, () ->
+        {
+            this.<CheckMeOut>getAddon().getSubmissionsManager().clearAll();
+            Utils.sendMessage(user, "general.success");
         });
+
         return true;
     }
-
 }

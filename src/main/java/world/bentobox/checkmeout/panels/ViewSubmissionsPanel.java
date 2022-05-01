@@ -16,7 +16,6 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.panels.PanelItem;
 import world.bentobox.bentobox.api.panels.TemplatedPanel;
@@ -74,10 +73,7 @@ public class ViewSubmissionsPanel
         if (this.elementList.isEmpty())
         {
             this.addon.logError("There are no available islands for viewing!");
-            Utils.sendMessage(this.user, "checkmeout.error.no-submissions-yet",
-                "[gamemode]", this.addon.getPlugin().getIWM().getAddon(this.world).
-                    map(gamemode -> gamemode.getDescription().getName()).
-                    orElse(""));
+            Utils.sendMessage(this.user, "checkmeout.conversations.no-submissions-yet");
             return;
         }
 
@@ -426,19 +422,7 @@ public class ViewSubmissionsPanel
         }
 
         // Generate [level] text
-        String levelText;
-
-        if (this.addon.getLevelAddon() != null)
-        {
-            long level = this.addon.getLevelAddon().getIslandLevel(this.world, ownerUUID);
-
-            levelText = this.user.getTranslationOrNothing(reference + "level",
-                "[number]", String.valueOf(level));
-        }
-        else
-        {
-            levelText = "";
-        }
+        String levelText = this.generateLevelText(ownerUUID);
 
         // Generate [likes] text
         String likesText = this.generateLikesText(island);
@@ -568,6 +552,34 @@ public class ViewSubmissionsPanel
         }
 
         return builder.build();
+    }
+
+
+    /**
+     * This method generated Level Text for island.
+     * @param ownerUUID Owner whoes island level must be displayed.
+     * @return Level text.
+     */
+    private String generateLevelText(UUID ownerUUID)
+    {
+        final String reference = "checkmeout.gui.buttons.island.level";
+        String levelText;
+
+        if (this.addon.getLevelAddon() != null)
+        {
+            long level = this.addon.getLevelAddon().getIslandLevel(this.world, ownerUUID);
+            int place = this.addon.getLevelAddon().getManager().getRank(this.world, ownerUUID);
+
+            levelText = this.user.getTranslationOrNothing(reference,
+                "[level]", String.valueOf(level),
+                "[place]", String.valueOf(place));
+        }
+        else
+        {
+            levelText = "";
+        }
+
+        return levelText;
     }
 
 

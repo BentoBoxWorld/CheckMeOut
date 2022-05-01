@@ -21,12 +21,9 @@ checkmeout:
       description: "Tell admins to check out your island!"
       seesubs:
         description: "see submissions panel"
-  error: 
-    does-not-exist: "&c There is no submission from that player!"
-    no-submissions-yet: "&c There are no submissions yet"
-  success: "&a Success!"
-
+  # GUI section.
   gui:
+    # Titles for addon GUI's
     titles:
       view: "&0&l Submissions"
     buttons:
@@ -56,15 +53,17 @@ checkmeout:
         # List each member under the title for [members] in description
         member: "&b - [player]"
         # Text that generates [level] field.
-        level: "&7 Level: &b [number]"
+        level: |-
+          &7 Level: &b [level]
+          &7    Place: &b [place]
         # Generates in [likes] field
         likes:
           # Text that is generated for LIKES mode.
-          likes: |
+          likes: |-
             &7 Number of likes: &b [likes]
             &7    Place: &b [place]
           # Text that is generated for LIKES_DISLIKES mode.
-          likes_dislikes: |
+          likes_dislikes: |-
             &7 Number of likes: &b [likes]
             &7    Place: &b [place_likes]
             &7 Number of dislikes: &b [dislikes]
@@ -72,7 +71,7 @@ checkmeout:
             &7 Island rank: &b [rank]
             &7    Place: &b [place_rank]
           # Text that is generated for STARS mode.
-          stars: |
+          stars: |-
             &7 Average of stars: &b [stars]
             &7    Place: &b [place]
           # Text that is generated if player has no likes on island.
@@ -82,6 +81,7 @@ checkmeout:
         name: "&f&l Random Submission"
         description: |-
           &7 Hmm, where will I appear?
+    # Tips for the actions.
     tips:
       click-to-previous: "&e Click &7 to view previous page."
       click-to-next: "&e Click &7 to view next page."
@@ -89,5 +89,9 @@ checkmeout:
       click-to-visit: "&e Click &7 to visit."
       click-to-check: "&e Click &7 to check."
   conversations:
-    # Prefix for messages that are send from server.
+    # Prefix for messages that are sent from server.
     prefix: "&l&6 [BentoBox]: &r"
+    # Message that is sent if there are no submission from requested player.
+    does-not-exist: "&c There is no submission from that player!"
+    # Message that is sent if there are no submissions at all.
+    no-submissions-yet: "&c There are no submissions yet"

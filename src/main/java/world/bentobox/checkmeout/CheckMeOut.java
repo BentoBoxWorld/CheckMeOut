@@ -9,8 +9,8 @@ import org.bukkit.World;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.configuration.Config;
 import world.bentobox.bentobox.util.Util;
-import world.bentobox.checkmeout.commands.admin.CMOAdminCommand;
-import world.bentobox.checkmeout.commands.island.CheckMeOutCommand;
+import world.bentobox.checkmeout.commands.admin.AdminSubmissionCommand;
+import world.bentobox.checkmeout.commands.island.IslandSubmissionCommand;
 import world.bentobox.checkmeout.config.Settings;
 import world.bentobox.checkmeout.managers.SubmissionsManager;
 import world.bentobox.level.Level;
@@ -130,8 +130,8 @@ public class CheckMeOut extends Addon {
             {
                 this.registeredWorlds.add(gameModeAddon.getOverWorld());
 
-                new CMOAdminCommand(this, gameModeAddon.getAdminCommand().get());
-                new CheckMeOutCommand(this, gameModeAddon.getPlayerCommand().get());
+                new AdminSubmissionCommand(this, gameModeAddon.getAdminCommand().get());
+                new IslandSubmissionCommand(this, gameModeAddon.getPlayerCommand().get());
                 this.hooked = true;
             }
         });

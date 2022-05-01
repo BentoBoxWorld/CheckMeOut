@@ -12,63 +12,85 @@ import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.commands.ConfirmableCommand;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.checkmeout.panels.Utils;
+
 
 /**
- * The /bsbadmin check <name> command
+ * The `/[admin_cmd] cmo check <name>` command
  *
  * @author tastybento
- *
  */
-class DeleteSubmissionCommand extends ConfirmableCommand {
-
-    private final CheckMeOut addon;
+class DeleteSubmissionCommand extends ConfirmableCommand
+{
     private @Nullable UUID target;
 
-    public DeleteSubmissionCommand(CheckMeOut addon, CompositeCommand bsbIslandCmd) {
-        super(bsbIslandCmd, "delete");
-        this.addon = addon;
+
+    public DeleteSubmissionCommand(CompositeCommand parent)
+    {
+        super(parent, "delete");
     }
 
+
     @Override
-    public void setup() {
+    public void setup()
+    {
         this.setPermission("checkmeout.admin.delete");
         this.setOnlyPlayer(true);
         this.setParametersHelp("checkmeout.commands.admin.delete.parameters");
         this.setDescription("checkmeout.commands.admin.delete.description");
     }
 
+
     @Override
-    public boolean canExecute(User user, String label, List<String> args) {
-        if (args.isEmpty()) {
+    public boolean canExecute(User user, String label, List<String> args)
+    {
+        if (args.isEmpty())
+        {
             this.showHelp(this, user);
             return false;
         }
-        target = getPlayers().getUUID(args.get(0));
-        if (target != null) {
-            if (addon.getSubmissionsManager().listSubmissions(getWorld()).contains(target)) {
+
+        this.target = getPlayers().getUUID(args.get(0));
+
+        if (this.target != null)
+        {
+            if (this.<CheckMeOut>getAddon().getSubmissionsManager().
+                listSubmissions(this.getWorld()).contains(this.target))
+            {
                 return true;
             }
         }
-        user.sendMessage("checkmeout.error.does-not-exist");
+
+        Utils.sendMessage(user, "checkmeout.conversations.does-not-exist");
+
         return false;
     }
 
+
     @Override
-    public boolean execute(User user, String label, List<String> args) {
-        this.askConfirmation(user, ()-> delete(user, target));
+    public boolean execute(User user, String label, List<String> args)
+    {
+        this.askConfirmation(user, () -> this.delete(user, target));
         return true;
     }
 
-    private void delete(User user, @Nullable UUID uuid) {
-        addon.getSubmissionsManager().removeSubmission(getWorld(), uuid);
-        user.sendMessage("general.success");
+
+    private void delete(User user, @Nullable UUID uuid)
+    {
+        this.<CheckMeOut>getAddon().getSubmissionsManager().removeSubmission(this.getWorld(), uuid);
+        Utils.sendMessage(user, "general.success");
     }
+
 
     @Override
-    public Optional<List<String>> tabComplete(User user, String alias, List<String> args) {
-        World world = getWorld() == null ? user.getWorld() : getWorld();
-        return Optional.of(addon.getSubmissionsManager().listSubmissions(world).stream().map(getPlayers()::getName).collect(Collectors.toList()));
+    public Optional<List<String>> tabComplete(User user, String alias, List<String> args)
+    {
+        World world = this.getWorld() == null ? user.getWorld() : this.getWorld();
+
+        return Optional.of(this.<CheckMeOut>getAddon().getSubmissionsManager().
+            listSubmissions(world).
+            stream().
+            map(this.getPlayers()::getName).
+            collect(Collectors.toList()));
     }
-
-
 }
