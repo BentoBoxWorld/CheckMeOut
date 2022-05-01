@@ -7,10 +7,13 @@
 package world.bentobox.checkmeout.panels;
 
 
+import org.bukkit.World;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
+import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.user.User;
 
 
@@ -72,5 +75,18 @@ public class Utils
         }
 
         return defaultValue;
+    }
+
+
+    /**
+     * This method returns GameMode name in lowercase based on given world.
+     * @param world World which gamemode must be returned.
+     * @return GameMode name in lowercase.
+     */
+    public static String getGameMode(World world)
+    {
+        return BentoBox.getInstance().getIWM().getAddon(world).
+            map(gamemode -> gamemode.getDescription().getName().toLowerCase()).
+            orElse("");
     }
 }

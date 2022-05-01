@@ -16,6 +16,7 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.panels.PanelItem;
 import world.bentobox.bentobox.api.panels.TemplatedPanel;
@@ -512,6 +513,11 @@ public class ViewSubmissionsPanel
                     return island.getOwner() == null ||
                         this.addon.getVisitAddon() == null ||
                         !this.addon.getVisitAddon().getAddonManager().preprocessTeleportation(this.user, island, true);
+                }
+                case "CHECK" -> {
+                    String gamemode = Utils.getGameMode(this.world);
+
+                    return gamemode.isBlank() || !this.user.hasPermission(gamemode + ".checkmeout.admin.check");
                 }
                 default -> {
                     return false;
