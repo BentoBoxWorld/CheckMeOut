@@ -63,12 +63,15 @@ view_panel:
         data:
           type: RANDOM
         actions:
+          # Warp action requires WARP addon. If warp addon is not present, warp action will not work.
           warp:
             click-type: UNKNOWN
             tooltip: checkmeout.gui.tips.click-to-warp
+          # Visit action requires Visit addon. If Visit addon is not present, visit action will not work.
           visit:
             click-type: UNKNOWN
             tooltip: checkmeout.gui.tips.click-to-visit
+          # Check action requires player to have "[gamemode].checkmeout.admin.check" permission.
           check:
             click-type: UNKNOWN
             tooltip: checkmeout.gui.tips.click-to-check
@@ -81,12 +84,18 @@ view_panel:
       data:
         type: ISLAND
       actions:
+        # Warp action requires WARP addon. If warp addon is not present, warp action will not work.
         warp:
+          # Click type UNKNOWN means that it accept any click type.
           click-type: UNKNOWN
           tooltip: checkmeout.gui.tips.click-to-warp
+        # Visit action requires Visit addon. If Visit addon is not present, visit action will not work.
         visit:
+          # Click type UNKNOWN means that it accept any click type.
           click-type: UNKNOWN
           tooltip: checkmeout.gui.tips.click-to-visit
+        # Check action requires player to have "[gamemode].checkmeout.admin.check" permission.
         check:
+          # Click type UNKNOWN means that it accept any click type.
           click-type: UNKNOWN
           tooltip: checkmeout.gui.tips.click-to-check
