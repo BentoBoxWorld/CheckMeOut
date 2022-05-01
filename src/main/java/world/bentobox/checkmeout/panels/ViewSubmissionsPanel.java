@@ -26,6 +26,7 @@ import world.bentobox.bentobox.api.panels.reader.ItemTemplateRecord;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.likes.LikesAddon;
 import world.bentobox.likes.database.objects.LikesObject;
 
 
@@ -440,33 +441,7 @@ public class ViewSubmissionsPanel
         }
 
         // Generate [likes] text
-        String likesText;
-
-        if (this.addon.getLikesAddon() != null)
-        {
-            LikesObject existingIslandLikes =
-                this.addon.getLikesAddon().getAddonManager().getExistingIslandLikes(island.getUniqueId());
-
-            if (existingIslandLikes != null)
-            {
-                long likes = existingIslandLikes.getLikes();
-                long dislikes = existingIslandLikes.getDislikes();
-                double stars = existingIslandLikes.getStarsValue();
-
-                likesText = this.user.getTranslationOrNothing(reference + "likes.text",
-                    "[likes]", String.valueOf(likes),
-                    "[dislikes]", String.valueOf(dislikes),
-                    "[stars]", String.valueOf(stars));
-            }
-            else
-            {
-                likesText = this.user.getTranslationOrNothing(reference + "likes.no-likes");
-            }
-        }
-        else
-        {
-            likesText = "";
-        }
+        String likesText = this.generateLikesText(island);
 
         String descriptionText;
 
@@ -593,6 +568,79 @@ public class ViewSubmissionsPanel
         }
 
         return builder.build();
+    }
+
+
+    /**
+     * This method generates text that will replace [likes] in button description.
+     * @param island Island which likes text must be generated.
+     * @return String that contains information about island likes.
+     */
+    private String generateLikesText(Island island)
+    {
+        final String reference = "checkmeout.gui.buttons.island.likes.";
+
+        String likesText;
+
+        if (this.addon.getLikesAddon() != null)
+        {
+            LikesAddon likesAddon = this.addon.getLikesAddon();
+
+            LikesObject existingIslandLikes = likesAddon.getAddonManager().getExistingIslandLikes(island.getUniqueId());
+
+            if (existingIslandLikes != null)
+            {
+                switch (likesAddon.getSettings().getMode())
+                {
+                    case LIKES -> {
+                        long likes = existingIslandLikes.getLikes();
+                        int place = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
+
+                        likesText = this.user.getTranslationOrNothing(reference + "likes",
+                            "[likes]", String.valueOf(likes),
+                            "[place]", String.valueOf(place));
+                    }
+                    case LIKES_DISLIKES -> {
+                        long likes = existingIslandLikes.getLikes();
+                        long dislikes = existingIslandLikes.getDislikes();
+                        long rank = existingIslandLikes.getRank();
+
+                        int placeLikes = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
+                        int placeDislikes = likesAddon.getAddonManager().getIslandRankByDislikes(this.world, existingIslandLikes);
+                        int placeRank = likesAddon.getAddonManager().getIslandRankByRank(this.world, existingIslandLikes);
+
+                        likesText = this.user.getTranslationOrNothing(reference + "likes_dislikes",
+                            "[likes]", String.valueOf(likes),
+                            "[dislikes]", String.valueOf(dislikes),
+                            "[rank]", String.valueOf(rank),
+                            "[place_likes]", String.valueOf(placeLikes),
+                            "[place_dislikes]", String.valueOf(placeDislikes),
+                            "[place_rank]", String.valueOf(placeRank));
+                    }
+                    case STARS -> {
+                        double stars = existingIslandLikes.getStarsValue();
+                        int place = likesAddon.getAddonManager().getIslandRankByStars(this.world, existingIslandLikes);
+
+                        likesText = this.user.getTranslationOrNothing(reference + "stars",
+                            "[stars]", String.valueOf(stars),
+                            "[place]", String.valueOf(place));
+                    }
+                    default -> {
+                        likesText = "";
+                    }
+                }
+            }
+            else
+            {
+                likesText = this.user.getTranslationOrNothing(reference + "no-likes");
+            }
+        }
+        else
+        {
+            likesText = "";
+        }
+
+        return likesText;
     }
 
 

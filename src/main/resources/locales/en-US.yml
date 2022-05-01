@@ -59,11 +59,22 @@ checkmeout:
         level: "&7 Level: &b [number]"
         # Generates in [likes] field
         likes:
-          # Text that is generated in [likes] field.
-          text: |-
-            &7 Likes: &b [likes]
-            &7 Dislikes: &b [dislikes]
-            &7 Stars: &b [stars]
+          # Text that is generated for LIKES mode.
+          likes: |
+            &7 Number of likes: &b [likes]
+            &7    Place: &b [place]
+          # Text that is generated for LIKES_DISLIKES mode.
+          likes_dislikes: |
+            &7 Number of likes: &b [likes]
+            &7    Place: &b [place_likes]
+            &7 Number of dislikes: &b [dislikes]
+            &7    Place: &b [place_dislikes]
+            &7 Island rank: &b [rank]
+            &7    Place: &b [place_rank]
+          # Text that is generated for STARS mode.
+          stars: |
+            &7 Average of stars: &b [stars]
+            &7    Place: &b [place]
           # Text that is generated if player has no likes on island.
           no-likes: "&7 No likes"
       # Button for a random submission
