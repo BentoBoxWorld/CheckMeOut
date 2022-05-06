@@ -19,11 +19,79 @@ checkmeout:
         description: "see submissions panel"
     user: 
       description: "Tell admins to check out your island!"
-  error: 
+      seesubs:
+        description: "see submissions panel"
+  # GUI section.
+  gui:
+    # Titles for addon GUI's
+    titles:
+      view: "&0&l Submissions"
+    buttons:
+      # List of buttons in Visit GUI
+      # Button that is used in multi-page GUIs which allows to return to previous page.
+      previous:
+        name: "&f&l Previous Page"
+        description: |-
+          &7 Switch to [number] page
+      # Button that is used in multi-page GUIs which allows to go to next page.
+      next:
+        name: "&f&l Next Page"
+        description: |-
+          &7 Switch to [number] page
+      # Button in User GUI for each island
+      island:
+        name: '&f&l [name]'
+        description: |-
+          [owner]
+          [members]
+          [level]
+          [likes]
+        # Text for [owner] in description.
+        owner: "&7&l Owner: &r&b [player]"
+        # Title before listing members for [members] in description
+        members-title: "&7&l Members:"
+        # List each member under the title for [members] in description
+        member: "&b - [player]"
+        # Text that generates [level] field.
+        level: |-
+          &7 Level: &b [level]
+          &7    Place: &b [place]
+        # Generates in [likes] field
+        likes:
+          # Text that is generated for LIKES mode.
+          likes: |-
+            &7 Number of likes: &b [likes]
+            &7    Place: &b [place]
+          # Text that is generated for LIKES_DISLIKES mode.
+          likes_dislikes: |-
+            &7 Number of likes: &b [likes]
+            &7    Place: &b [place_likes]
+            &7 Number of dislikes: &b [dislikes]
+            &7    Place: &b [place_dislikes]
+            &7 Island rank: &b [rank]
+            &7    Place: &b [place_rank]
+          # Text that is generated for STARS mode.
+          stars: |-
+            &7 Average of stars: &b [stars]
+            &7    Place: &b [place]
+          # Text that is generated if player has no likes on island.
+          no-likes: "&7 No likes"
+      # Button for a random submission
+      random:
+        name: "&f&l Random Submission"
+        description: |-
+          &7 Hmm, where will I appear?
+    # Tips for the actions.
+    tips:
+      click-to-previous: "&e Click &7 to view previous page."
+      click-to-next: "&e Click &7 to view next page."
+      click-to-warp: "&e Click &7 to warp."
+      click-to-visit: "&e Click &7 to visit."
+      click-to-check: "&e Click &7 to check."
+  conversations:
+    # Prefix for messages that are sent from server.
+    prefix: "&l&6 [BentoBox]: &r"
+    # Message that is sent if there are no submission from requested player.
     does-not-exist: "&c There is no submission from that player!"
+    # Message that is sent if there are no submissions at all.
     no-submissions-yet: "&c There are no submissions yet"
-  next: "&6 Next page"
-  previous: "&6 Previous page"
-  random: "&4 Random Warp"
-  success: "&a Success!"
-  title: Submissions

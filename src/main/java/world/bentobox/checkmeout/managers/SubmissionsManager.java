@@ -1,4 +1,4 @@
-package world.bentobox.checkmeout;
+package world.bentobox.checkmeout.managers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,6 +22,7 @@ import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.Database;
 import world.bentobox.bentobox.util.Util;
 import world.bentobox.bentobox.util.teleport.SafeSpotTeleport;
+import world.bentobox.checkmeout.CheckMeOut;
 import world.bentobox.checkmeout.objects.SubmissionData;
 
 /**
