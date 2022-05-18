@@ -7,10 +7,11 @@ authors: tastybento
 
 softdepend: AcidIsland, BSkyBlock, CaveBlock, AOneBlock, Boxed, Level, Likes, Visit, Warps
 
+
 permissions:
   checkmeout.icon.<MATERIAL>:
     description: Allows to customize icon per player.
-    default: false;
+    default: false
   '[gamemode].checkmeout':
     description: Player can use the checkmeout command
     default: true
