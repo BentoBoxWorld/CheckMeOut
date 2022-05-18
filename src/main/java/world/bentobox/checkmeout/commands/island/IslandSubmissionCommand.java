@@ -1,10 +1,13 @@
 package world.bentobox.checkmeout.commands.island;
 
+import org.bukkit.Bukkit;
 import java.util.List;
 
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.user.User;
+import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.checkmeout.events.IslandSubmittedEvent;
 import world.bentobox.checkmeout.panels.Utils;
 
 
@@ -60,8 +63,11 @@ public class IslandSubmissionCommand extends CompositeCommand
     @Override
     public boolean execute(User user, String label, List<String> args)
     {
-        if (this.<CheckMeOut>getAddon().getSubmissionsManager().addSubmission(user.getUniqueId(),
-            this.getIslands().getHomeLocation(this.getWorld(), user.getUniqueId())))
+        Island island = this.getIslands().getIsland(this.getWorld(), user.getUniqueId());
+
+        if (island != null &&
+            this.<CheckMeOut>getAddon().getSubmissionsManager().addSubmission(island.getOwner(),
+                this.getIslands().getHomeLocation(this.getWorld(), user.getUniqueId())))
         {
             Utils.sendMessage(user, "general.success");
             return true;
