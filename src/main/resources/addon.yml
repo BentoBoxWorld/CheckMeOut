@@ -5,70 +5,28 @@ icon: ITEM_FRAME
 
 authors: tastybento
 
-softdepend: AcidIsland, BSkyBlock, CaveBlock, AOneBlock
+softdepend: AcidIsland, BSkyBlock, CaveBlock, AOneBlock, Boxed, Level, Likes, Visit, Warps
+
 
 permissions:
-  bskyblock.checkmeout:
+  checkmeout.icon.<MATERIAL>:
+    description: Allows to customize icon per player.
+    default: false
+  '[gamemode].checkmeout':
     description: Player can use the checkmeout command
     default: true
-  bskyblock.checkmeout.admin.check:
-    description: Admin can teleport to a player's island
-    default: op
-  bskyblock.checkmeout.admin.delete:
-    description: Admin can delete a submission
-    default: op
-  bskyblock.checkmeout.admin.clearsubmissions:
-    description: Admin can clear submissions
-    default: op
-  bskyblock.checkmeout.admin.seesubs:
-    description: Admin can open the submissions GUI
-    default: op
-    
-  acidisland.checkmeout:
-    description: Player can use the checkmeout command
+  '[gamemode].checkmeout.view':
+    description: Player can use the checkmeout view command
     default: true
-  acidisland.checkmeout.admin.check:
+  '[gamemode].checkmeout.admin.check':
     description: Admin can teleport to a player's island
     default: op
-  acidisland.checkmeout.admin.delete:
+  '[gamemode].checkmeout.admin.delete':
     description: Admin can delete a submission
     default: op
-  acidisland.checkmeout.admin.clearsubmissions:
+  '[gamemode].checkmeout.admin.clearsubmissions':
     description: Admin can clear submissions
     default: op
-  acidisland.checkmeout.admin.seesubs:
+  '[gamemode].checkmeout.admin.seesubs':
     description: Admin can open the submissions GUI
     default: op
-    
-  caveblock.checkmeout:
-    description: Player can use the checkmeout command
-    default: true
-  caveblock.checkmeout.admin.check:
-    description: Admin can teleport to a player's island
-    default: op
-  caveblock.checkmeout.admin.delete:
-    description: Admin can delete a submission
-    default: op
-  caveblock.checkmeout.admin.clearsubmissions:
-    description: Admin can clear submissions
-    default: op
-  caveblock.checkmeout.admin.seesubs:
-    description: Admin can open the submissions GUI
-    default: op
-
-  aoneblock.checkmeout:
-    description: Player can use the checkmeout command
-    default: true
-  aoneblock.checkmeout.admin.check:
-    description: Admin can teleport to a player's island
-    default: op
-  aoneblock.checkmeout.admin.delete:
-    description: Admin can delete a submission
-    default: op
-  aoneblock.checkmeout.admin.clearsubmissions:
-    description: Admin can clear submissions
-    default: op
-  aoneblock.checkmeout.admin.seesubs:
-    description: Admin can open the submissions GUI
-    default: op
-    

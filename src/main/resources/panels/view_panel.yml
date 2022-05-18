@@ -1,0 +1,101 @@
+view_panel:
+  title: checkmeout.gui.titles.view
+  type: INVENTORY
+  background:
+    icon: BLACK_STAINED_GLASS_PANE
+    title: "&b&r" # Empty text
+  border:
+    icon: BLACK_STAINED_GLASS_PANE
+    title: "&b&r"  # Empty text
+  force-shown: []
+  content:
+    2:
+      2: island_button
+      3: island_button
+      4: island_button
+      5: island_button
+      6: island_button
+      7: island_button
+      8: island_button
+    3:
+      1:
+        icon: TIPPED_ARROW:INSTANT_HEAL::::1
+        title: checkmeout.gui.buttons.previous.name
+        description: checkmeout.gui.buttons.previous.description
+        data:
+          type: PREVIOUS
+          indexing: true
+        actions:
+          left:
+            type: PREVIOUS
+            tooltip: checkmeout.gui.tips.click-to-previous
+      2: island_button
+      3: island_button
+      4: island_button
+      5: island_button
+      6: island_button
+      7: island_button
+      8: island_button
+      9:
+        icon: TIPPED_ARROW:JUMP::::1
+        title: checkmeout.gui.buttons.next.name
+        description: checkmeout.gui.buttons.next.description
+        data:
+          type: NEXT
+          indexing: true
+        actions:
+          left:
+            type: NEXT
+            tooltip: checkmeout.gui.tips.click-to-next
+    4:
+      2: island_button
+      3: island_button
+      4: island_button
+      5: island_button
+      6: island_button
+      7: island_button
+      8: island_button
+    6:
+      5:
+        icon: DROPPER
+        title: checkmeout.gui.buttons.random.name
+        description: checkmeout.gui.buttons.random.description
+        data:
+          type: RANDOM
+        actions:
+          # Warp action requires WARP addon. If warp addon is not present, warp action will not work.
+          warp:
+            click-type: UNKNOWN
+            tooltip: checkmeout.gui.tips.click-to-warp
+          # Visit action requires Visit addon. If Visit addon is not present, visit action will not work.
+          visit:
+            click-type: UNKNOWN
+            tooltip: checkmeout.gui.tips.click-to-visit
+          # Check action requires player to have "[gamemode].checkmeout.admin.check" permission.
+          check:
+            click-type: UNKNOWN
+            tooltip: checkmeout.gui.tips.click-to-check
+  reusable:
+    island_button:
+      # Custom icon for island button. Setting it to PLAYER_HEAD will display Steve player head.
+      # icon: PLAYER_HEAD
+      title: checkmeout.gui.buttons.island.name
+      description: checkmeout.gui.buttons.island.description
+      data:
+        type: ISLAND
+      actions:
+        # Warp action requires WARP addon. If warp addon is not present, warp action will not work.
+        warp:
+          # Click type UNKNOWN means that it accept any click type.
+          click-type: UNKNOWN
+          tooltip: checkmeout.gui.tips.click-to-warp
+        # Visit action requires Visit addon. If Visit addon is not present, visit action will not work.
+        visit:
+          # Click type UNKNOWN means that it accept any click type.
+          click-type: UNKNOWN
+          tooltip: checkmeout.gui.tips.click-to-visit
+        # Check action requires player to have "[gamemode].checkmeout.admin.check" permission.
+        check:
+          # Click type UNKNOWN means that it accept any click type.
+          click-type: UNKNOWN
+          tooltip: checkmeout.gui.tips.click-to-check
