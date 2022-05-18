@@ -12,6 +12,7 @@ import world.bentobox.bentobox.util.Util;
 import world.bentobox.checkmeout.commands.admin.AdminSubmissionCommand;
 import world.bentobox.checkmeout.commands.island.IslandSubmissionCommand;
 import world.bentobox.checkmeout.config.Settings;
+import world.bentobox.checkmeout.listeners.IslandDeleteListener;
 import world.bentobox.checkmeout.managers.SubmissionsManager;
 import world.bentobox.level.Level;
 import world.bentobox.likes.LikesAddon;
@@ -141,7 +142,7 @@ public class CheckMeOut extends Addon {
             // Start managers
             submissionsManager = new SubmissionsManager(this, this.getPlugin());
             // Load the listener
-
+            this.registerListener(new IslandDeleteListener(this));
         } else {
             logWarning("Addon did not hook into any game modes - disabling");
             this.setState(State.DISABLED);
