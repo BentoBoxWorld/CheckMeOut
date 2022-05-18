@@ -11,6 +11,7 @@ import java.util.TreeMap;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -23,6 +24,7 @@ import world.bentobox.bentobox.database.Database;
 import world.bentobox.bentobox.util.Util;
 import world.bentobox.bentobox.util.teleport.SafeSpotTeleport;
 import world.bentobox.checkmeout.CheckMeOut;
+import world.bentobox.checkmeout.events.IslandSubmittedEvent;
 import world.bentobox.checkmeout.objects.SubmissionData;
 
 /**
@@ -81,6 +83,10 @@ public class SubmissionsManager {
         }
         getSubmissionsMap(loc.getWorld()).put(playerUUID, loc);
         saveSubmissions();
+
+        // Call submitted event.
+        Bukkit.getServer().getPluginManager().callEvent(new IslandSubmittedEvent(playerUUID, loc));
+
         return true;
     }
 
