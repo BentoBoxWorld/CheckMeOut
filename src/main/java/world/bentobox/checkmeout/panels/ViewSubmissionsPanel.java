@@ -34,9 +34,9 @@ import world.bentobox.likes.database.objects.LikesObject;
  */
 public class ViewSubmissionsPanel
 {
-// ---------------------------------------------------------------------
-// Section: Constructor
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Constructor
+    // ---------------------------------------------------------------------
 
 
     /**
@@ -47,8 +47,8 @@ public class ViewSubmissionsPanel
      * @param user User who opens panel
      */
     private ViewSubmissionsPanel(CheckMeOut addon,
-        World world,
-        User user)
+            World world,
+            User user)
     {
         this.addon = addon;
         this.user = user;
@@ -58,9 +58,9 @@ public class ViewSubmissionsPanel
     }
 
 
-// ---------------------------------------------------------------------
-// Section: Methods
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Methods
+    // ---------------------------------------------------------------------
 
 
     /**
@@ -98,9 +98,9 @@ public class ViewSubmissionsPanel
     }
 
 
-// ---------------------------------------------------------------------
-// Section: Buttons
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Buttons
+    // ---------------------------------------------------------------------
 
 
     /**
@@ -116,7 +116,7 @@ public class ViewSubmissionsPanel
         int size = this.elementList.size();
 
         if (size <= slot.amountMap().getOrDefault("ISLAND", 1) ||
-            1.0 * size / slot.amountMap().getOrDefault("ISLAND", 1) <= this.pageIndex + 1)
+                1.0 * size / slot.amountMap().getOrDefault("ISLAND", 1) <= this.pageIndex + 1)
         {
             // There are no next elements
             return null;
@@ -146,7 +146,7 @@ public class ViewSubmissionsPanel
         if (template.description() != null)
         {
             builder.description(this.user.getTranslation(this.world, template.description(),
-                "[number]", String.valueOf(nextPageIndex)));
+                    "[number]", String.valueOf(nextPageIndex)));
         }
 
         // Add ClickHandler
@@ -170,10 +170,10 @@ public class ViewSubmissionsPanel
 
         // Collect tooltips.
         List<String> tooltips = template.actions().stream().
-            filter(action -> action.tooltip() != null).
-            map(action -> this.user.getTranslation(this.world, action.tooltip())).
-            filter(text -> !text.isBlank()).
-            collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
+                filter(action -> action.tooltip() != null).
+                map(action -> this.user.getTranslation(this.world, action.tooltip())).
+                filter(text -> !text.isBlank()).
+                collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
 
         // Add tooltips.
         if (!tooltips.isEmpty())
@@ -227,7 +227,7 @@ public class ViewSubmissionsPanel
         if (template.description() != null)
         {
             builder.description(this.user.getTranslation(this.world, template.description(),
-                "[number]", String.valueOf(previousPageIndex)));
+                    "[number]", String.valueOf(previousPageIndex)));
         }
 
         // Add ClickHandler
@@ -252,10 +252,10 @@ public class ViewSubmissionsPanel
 
         // Collect tooltips.
         List<String> tooltips = template.actions().stream().
-            filter(action -> action.tooltip() != null).
-            map(action -> this.user.getTranslation(this.world, action.tooltip())).
-            filter(text -> !text.isBlank()).
-            collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
+                filter(action -> action.tooltip() != null).
+                map(action -> this.user.getTranslation(this.world, action.tooltip())).
+                filter(text -> !text.isBlank()).
+                collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
 
         // Add tooltips.
         if (!tooltips.isEmpty())
@@ -314,9 +314,9 @@ public class ViewSubmissionsPanel
     }
 
 
-// ---------------------------------------------------------------------
-// Section: Other methods
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Other methods
+    // ---------------------------------------------------------------------
 
 
     /**
@@ -355,8 +355,8 @@ public class ViewSubmissionsPanel
         {
             // Check owner for a specific icon
             Material material = Material.matchMaterial(
-                Utils.getPermissionValue(owner, "checkmeout.icon",
-                    this.addon.getSettings().getIslandIcon().name()));
+                    Utils.getPermissionValue(owner, "checkmeout.icon",
+                            this.addon.getSettings().getIslandIcon().name()));
 
             if (material == null)
             {
@@ -377,21 +377,21 @@ public class ViewSubmissionsPanel
         if (template.title() != null)
         {
             builder.name(this.user.getTranslation(this.world, template.title(),
-                "[name]", island.getName() != null ?
-                    island.getName() : owner.getName()));
+                    "[name]", island.getName() != null ?
+                            island.getName() : owner.getName()));
         }
         else
         {
             builder.name(this.user.getTranslation(reference + "name",
-                "[name]", island.getName() != null ?
-                    island.getName() : owner.getName()));
+                    "[name]", island.getName() != null ?
+                            island.getName() : owner.getName()));
         }
 
         // Process Description of the button.
 
         // Generate [owner] text.
         String ownerText = this.user.getTranslationOrNothing(reference + "owner",
-            "[player]", owner.getName());
+                "[player]", owner.getName());
 
         // Generate [members] text
         String memberText;
@@ -399,20 +399,20 @@ public class ViewSubmissionsPanel
         if (island.getMemberSet().size() > 1)
         {
             StringBuilder memberBuilder = new StringBuilder(
-                this.user.getTranslationOrNothing(reference + "members-title"));
+                    this.user.getTranslationOrNothing(reference + "members-title"));
 
             island.getMemberSet().stream().
-                map(this.addon.getPlayers()::getName).
-                forEach(user -> {
-                    if (memberBuilder.length() > 0)
-                    {
-                        memberBuilder.append("\n");
-                    }
+            map(this.addon.getPlayers()::getName).
+            forEach(user -> {
+                if (memberBuilder.length() > 0)
+                {
+                    memberBuilder.append("\n");
+                }
 
-                    memberBuilder.append(
+                memberBuilder.append(
                         this.user.getTranslationOrNothing(reference + "member",
-                            "[player]", user));
-                });
+                                "[player]", user));
+            });
 
             memberText = memberBuilder.toString();
         }
@@ -436,22 +436,22 @@ public class ViewSubmissionsPanel
                     "[members]", memberText,
                     "[level]", levelText,
                     "[likes]", likesText).
-                replaceAll("(?m)^[ \\t]*\\r?\\n", "").
-                replaceAll("(?<!\\\\)\\|", "\n").
-                replaceAll("\\\\\\|", "|");
+                    replaceAll("(?m)^[ \\t]*\\r?\\n", "").
+                    replaceAll("(?<!\\\\)\\|", "\n").
+                    replaceAll("\\\\\\|", "|");
         }
         else
         {
             descriptionText = this.user.getTranslationOrNothing(reference + "description",
-                "[owner]", ownerText,
-                "[members]", memberText,
-                "[level]", levelText,
-                "[likes]", likesText);
+                    "[owner]", ownerText,
+                    "[members]", memberText,
+                    "[level]", levelText,
+                    "[likes]", likesText);
 
             // Clean up description text and split it into parts.
             descriptionText = descriptionText.replaceAll("(?m)^[ \\t]*\\r?\\n", "").
-                replaceAll("(?<!\\\\)\\|", "\n").
-                replaceAll("\\\\\\|", "|");
+                    replaceAll("(?<!\\\\)\\|", "\n").
+                    replaceAll("\\\\\\|", "|");
         }
 
         builder.description(descriptionText);
@@ -461,27 +461,22 @@ public class ViewSubmissionsPanel
 
         activeActions.removeIf(action ->
         {
-            switch (action.actionType().toUpperCase())
-            {
-                case "WARP" -> {
-                    return island.getOwner() == null ||
-                        this.addon.getWarpAddon() == null ||
-                        !this.addon.getWarpAddon().getWarpSignsManager().hasWarp(this.world, island.getOwner());
-                }
-                case "VISIT" -> {
-                    return island.getOwner() == null ||
-                        this.addon.getVisitAddon() == null ||
-                        !this.addon.getVisitAddon().getAddonManager().preprocessTeleportation(this.user, island, true);
-                }
-                case "CHECK" -> {
-                    String gamemode = Utils.getGameMode(this.world);
+            return switch (action.actionType().toUpperCase())
+                    {
+                    case "WARP" -> island.getOwner() == null ||
+                            this.addon.getWarpAddon() == null ||
+                            !this.addon.getWarpAddon().getWarpSignsManager().hasWarp(this.world, island.getOwner());
 
-                    return gamemode.isBlank() || !this.user.hasPermission(gamemode + ".checkmeout.admin.check");
-                }
-                default -> {
-                    return false;
-                }
-            }
+                    case "VISIT" -> island.getOwner() == null ||
+                            this.addon.getVisitAddon() == null ||
+                            !this.addon.getVisitAddon().getAddonManager().preprocessTeleportation(this.user, island, true);
+
+                    case "CHECK" -> {
+                        String gamemode = Utils.getGameMode(this.world);
+                        yield gamemode.isBlank() || !this.user.hasPermission(gamemode + ".checkmeout.admin.check");
+                    }
+                    default -> false;
+                    };
         });
 
         // Remove duplicated actions
@@ -510,25 +505,25 @@ public class ViewSubmissionsPanel
                 {
                     switch (action.actionType().toUpperCase())
                     {
-                        case "WARP" -> {
-                            this.user.closeInventory();
-                            this.addon.getWarpAddon().getWarpSignsManager().warpPlayer(this.world, this.user, island.getOwner());
-                        }
-                        case "VISIT" -> {
-                            // Use Visit command because of delay. Delay is implemented via command executing.
-                            String visitCommand = this.addon.getVisitAddon().getSettings().getPlayerMainCommand().split(" ")[0];
+                    case "WARP" -> {
+                        this.user.closeInventory();
+                        this.addon.getWarpAddon().getWarpSignsManager().warpPlayer(this.world, this.user, island.getOwner());
+                    }
+                    case "VISIT" -> {
+                        // Use Visit command because of delay. Delay is implemented via command executing.
+                        String visitCommand = this.addon.getVisitAddon().getSettings().getPlayerMainCommand().split(" ")[0];
 
-                            this.addon.getPlugin().getIWM().getAddon(this.world).
-                                flatMap(GameModeAddon::getPlayerCommand).ifPresent(command ->
-                                {
-                                    this.user.performCommand(command.getTopLabel() + " " + visitCommand + " " + island.getOwner());
-                                    this.user.closeInventory();
-                                });
-                        }
-                        case "CHECK" -> {
+                        this.addon.getPlugin().getIWM().getAddon(this.world).
+                        flatMap(GameModeAddon::getPlayerCommand).ifPresent(command ->
+                        {
+                            this.user.performCommand(command.getTopLabel() + " " + visitCommand + " " + island.getOwner());
                             this.user.closeInventory();
-                            this.addon.getSubmissionsManager().warpPlayer(this.world, user, ownerUUID);
-                        }
+                        });
+                    }
+                    case "CHECK" -> {
+                        this.user.closeInventory();
+                        this.addon.getSubmissionsManager().warpPlayer(this.world, user, ownerUUID);
+                    }
                     }
                 }
             }
@@ -538,10 +533,10 @@ public class ViewSubmissionsPanel
 
         // Collect tooltips.
         List<String> tooltips = activeActions.stream().
-            filter(action -> action.tooltip() != null).
-            map(action -> this.user.getTranslation(this.world, action.tooltip())).
-            filter(text -> !text.isBlank()).
-            collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
+                filter(action -> action.tooltip() != null).
+                map(action -> this.user.getTranslation(this.world, action.tooltip())).
+                filter(text -> !text.isBlank()).
+                collect(Collectors.toCollection(() -> new ArrayList<>(template.actions().size())));
 
         // Add tooltips.
         if (!tooltips.isEmpty())
@@ -571,8 +566,8 @@ public class ViewSubmissionsPanel
             int place = this.addon.getLevelAddon().getManager().getRank(this.world, ownerUUID);
 
             levelText = this.user.getTranslationOrNothing(reference,
-                "[level]", String.valueOf(level),
-                "[place]", String.valueOf(place));
+                    "[level]", String.valueOf(level),
+                    "[place]", String.valueOf(place));
         }
         else
         {
@@ -604,42 +599,42 @@ public class ViewSubmissionsPanel
             {
                 switch (likesAddon.getSettings().getMode())
                 {
-                    case LIKES -> {
-                        long likes = existingIslandLikes.getLikes();
-                        int place = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
+                case LIKES -> {
+                    long likes = existingIslandLikes.getLikes();
+                    int place = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
 
-                        likesText = this.user.getTranslationOrNothing(reference + "likes",
+                    likesText = this.user.getTranslationOrNothing(reference + "likes",
                             "[likes]", String.valueOf(likes),
                             "[place]", String.valueOf(place));
-                    }
-                    case LIKES_DISLIKES -> {
-                        long likes = existingIslandLikes.getLikes();
-                        long dislikes = existingIslandLikes.getDislikes();
-                        long rank = existingIslandLikes.getRank();
+                }
+                case LIKES_DISLIKES -> {
+                    long likes = existingIslandLikes.getLikes();
+                    long dislikes = existingIslandLikes.getDislikes();
+                    long rank = existingIslandLikes.getRank();
 
-                        int placeLikes = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
-                        int placeDislikes = likesAddon.getAddonManager().getIslandRankByDislikes(this.world, existingIslandLikes);
-                        int placeRank = likesAddon.getAddonManager().getIslandRankByRank(this.world, existingIslandLikes);
+                    int placeLikes = likesAddon.getAddonManager().getIslandRankByLikes(this.world, existingIslandLikes);
+                    int placeDislikes = likesAddon.getAddonManager().getIslandRankByDislikes(this.world, existingIslandLikes);
+                    int placeRank = likesAddon.getAddonManager().getIslandRankByRank(this.world, existingIslandLikes);
 
-                        likesText = this.user.getTranslationOrNothing(reference + "likes_dislikes",
+                    likesText = this.user.getTranslationOrNothing(reference + "likes_dislikes",
                             "[likes]", String.valueOf(likes),
                             "[dislikes]", String.valueOf(dislikes),
                             "[rank]", String.valueOf(rank),
                             "[place_likes]", String.valueOf(placeLikes),
                             "[place_dislikes]", String.valueOf(placeDislikes),
                             "[place_rank]", String.valueOf(placeRank));
-                    }
-                    case STARS -> {
-                        double stars = existingIslandLikes.getStarsValue();
-                        int place = likesAddon.getAddonManager().getIslandRankByStars(this.world, existingIslandLikes);
+                }
+                case STARS -> {
+                    double stars = existingIslandLikes.getStarsValue();
+                    int place = likesAddon.getAddonManager().getIslandRankByStars(this.world, existingIslandLikes);
 
-                        likesText = this.user.getTranslationOrNothing(reference + "stars",
+                    likesText = this.user.getTranslationOrNothing(reference + "stars",
                             "[stars]", String.valueOf(stars),
                             "[place]", String.valueOf(place));
-                    }
-                    default -> {
-                        likesText = "";
-                    }
+                }
+                default -> {
+                    likesText = "";
+                }
                 }
             }
             else
@@ -656,9 +651,9 @@ public class ViewSubmissionsPanel
     }
 
 
-// ---------------------------------------------------------------------
-// Section: Static methods
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Static methods
+    // ---------------------------------------------------------------------
 
 
     /**
@@ -670,16 +665,16 @@ public class ViewSubmissionsPanel
      * @param user User who opens panel
      */
     public static void openPanel(CheckMeOut addon,
-        World world,
-        User user)
+            World world,
+            User user)
     {
         new ViewSubmissionsPanel(addon, world, user).build();
     }
 
 
-// ---------------------------------------------------------------------
-// Section: Variables
-// ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Section: Variables
+    // ---------------------------------------------------------------------
 
 
     /**
