@@ -10,8 +10,13 @@ import world.bentobox.bentobox.api.addons.Pladdon;
  */
 public class CheckMeOutPladdon extends Pladdon {
 
+    private Addon addon;
+
     @Override
     public Addon getAddon() {
-        return new CheckMeOut();
+        if (addon == null) {
+            addon = new CheckMeOut();
+        }
+        return addon;
     }
 }
