@@ -41,13 +41,9 @@
     </issueManagement>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>codemc-snapshots</id>
-            <url>https://repo.codemc.org/repository/maven-snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>codemc-releases</id>
-            <url>https://repo.codemc.org/repository/maven-releases</url>
+            <id>bentoboxworld</id>
+            <url>https://repo.codemc.org/repository/bentoboxworld/</url>
         </repository>
     </distributionManagement>
 
@@ -58,12 +54,12 @@
         <!-- Non-minecraft related dependencies -->
         <powermock.version>2.0.2</powermock.version>
         <!-- SPIGOT API version -->
-        <spigot.version>1.16.4-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.21.3-R0.1-SNAPSHOT</spigot.version>
         <!-- Vault API version -->
         <vault.version>1.7</vault.version>
 
         <!-- BentoBox API version -->
-        <bentobox.version>1.20.0</bentobox.version>
+        <bentobox.version>2.7.1-SNAPSHOT</bentobox.version>
         <!-- Warps addon version -->
         <warps.version>1.12.0</warps.version>
         <!-- Visit addon version -->
@@ -73,7 +69,7 @@
         <!-- Likes addon version -->
         <likes.version>2.1.1</likes.version>
         <!-- Panel Utils version -->
-        <panelutils.version>1.0.0</panelutils.version>
+        <panelutils.version>1.2.0</panelutils.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- This allows to change between versions and snapshots. -->
@@ -127,6 +123,10 @@
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
+        </repository>
+        <repository>
+            <id>bentoboxworld</id>
+            <url>https://repo.codemc.org/repository/bentoboxworld/</url>
         </repository>
         <repository>
             <id>codemc</id>
@@ -293,7 +293,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.3</version>
+                <version>0.8.10</version>
                 <configuration>
                     <append>true</append>
                     <excludes>
