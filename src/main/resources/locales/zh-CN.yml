@@ -1,24 +1,97 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+
 checkmeout: 
   commands: 
     admin: 
       check: 
-        description: "传送到提交者的岛屿"
+        description: "前往 提交者 岛屿"
         parameters: "<玩家名>"
       clearall: 
-        description: "清除所有岛屿提交"
+        description: "清空 所有 提交"
       delete: 
-        description: "删除玩家的岛屿提交"
-        parameters: "<玩家名>"
-      description: "CheckMeOut 管理员指令"
+        description: "删除 目标玩家 提交"
+        parameters: "删除谁提交"
+      description: "检查系统 管理员 命令"
       seesubs: 
-        description: "查看提交面板"
+        description: "打开 待检查 菜单"
     user: 
-      description: "向管理员们提交您的岛屿!"
-  error: 
-    does-not-exist: "&c 该玩家没有提交岛屿!"
-    no-submissions-yet: "&c 还没有人提交岛屿"
-  next: "&6 下一页"
-  previous: "&6 上一页"
-  random: "&4 随机传送"
-  success: "&a 成功!"
-  title: 岛屿提交
+      description: "让 管理员 检查 你 岛!"
+      seesubs:
+        description: "打开 待检查 菜单 (需权限)"
+  # GUI section.
+  gui:
+    # Titles for addon GUI's
+    titles:
+      view: "&0&l 待检查 菜单"
+    buttons:
+      # List of buttons in Visit GUI
+      # Button that is used in multi-page GUIs which allows to return to previous page.
+      previous:
+        name: "&f&l Previous Page"
+        description: |-
+          &7 Switch to [number] page
+      # Button that is used in multi-page GUIs which allows to go to next page.
+      next:
+        name: "&f&l Next Page"
+        description: |-
+          &7 Switch to [number] page
+      # Button in User GUI for each island
+      island:
+        name: '&f&l [name]'
+        description: |-
+          [owner]
+          [members]
+          [level]
+          [likes]
+        # Text for [owner] in description.
+        owner: "&7&l 岛主: &r&b [player]"
+        # Title before listing members for [members] in description
+        members-title: "&7&l Members:"
+        # List each member under the title for [members] in description
+        member: "&b - [player]"
+        # Text that generates [level] field.
+        level: |-
+          &7 等级: &b [level]
+          &7    等级排行: &b [place]
+        # Generates in [likes] field
+        likes:
+          # Text that is generated for LIKES mode.
+          likes: |-
+            &7 Number of likes: &b [likes]
+            &7    Place: &b [place]
+          # Text that is generated for LIKES_DISLIKES mode.
+          likes_dislikes: |-
+            &7 被赞: &b [likes]
+            &7    被赞排行: &b [place_likes]
+            &7 被踩: &b [dislikes]
+            &7    被踩排行: &b [place_dislikes]
+            &7 岛屿星级: &b [rank]
+            &7    星级排行: &b [place_rank]
+          # Text that is generated for STARS mode.
+          stars: |-
+            &7 Average of stars: &b [stars]
+            &7    Place: &b [place]
+          # Text that is generated if player has no likes on island.
+          no-likes: "&7 No likes"
+      # Button for a random submission
+      random:
+        name: "&f&l Random Submission"
+        description: |-
+          &7 Hmm, where will I appear?
+    # Tips for the actions.
+    tips:
+      click-to-previous: "&e Click &7 to view previous page."
+      click-to-next: "&e Click &7 to view next page."
+      click-to-warp: "&e Click &7 to warp."
+      click-to-visit: "&e 点击 &7 访问."
+      click-to-check: "&e Click &7 to check."
+  conversations:
+    # Prefix for messages that are sent from server.
+    prefix: "&l&6 [检查系统]: &r"
+    # Message that is sent if there are no submission from requested player.
+    does-not-exist: "&c 目标玩家未提交检查!"
+    # Message that is sent if there are no submissions at all.
+    no-submissions-yet: "&c 没有玩家提交检查"
