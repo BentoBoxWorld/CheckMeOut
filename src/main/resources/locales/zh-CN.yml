@@ -8,7 +8,7 @@ checkmeout:
     admin: 
       check: 
         description: "前往 提交者 岛屿"
-        parameters: "前往谁提交"
+        parameters: "<玩家名>"
       clearall: 
         description: "清空 所有 提交"
       delete: 
