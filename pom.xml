@@ -75,6 +75,10 @@
         <!-- This allows to change between versions and snapshots. -->
         <build.version>1.2.0</build.version>
         <build.number>-LOCAL</build.number>
+        <!-- SonarCloud -->
+        <sonar.projectKey>BentoBoxWorld_CheckMeOut</sonar.projectKey>
+        <sonar.organization>bentobox-world</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <!-- Profiles will allow to automatically change build version. -->
